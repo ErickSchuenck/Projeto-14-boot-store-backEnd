@@ -29,6 +29,8 @@ export async function postProduct(req, res) {
             image,
             value
             // seller: user._id
+            // QUANTIDADE DE VEZES QUE FOI CLICADO
+            // DAY.JS PARA RESGATAR PRODUTOS MAIS RECENTES
         });
 
         res.sendStatus(201);
