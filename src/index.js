@@ -5,6 +5,8 @@ import dotenv from "dotenv";
 
 import authRouter from "./routes/authRouter.js";
 import productsRouter from "./routes/productsRouter.js";
+import adsRouter from "./routes/adsRouter.js";
+import cartRouter from "./routes/cartRouter.js";
 
 dotenv.config();
 
@@ -14,7 +16,9 @@ app.use(json());
 
 // ROTAS
 app.use(authRouter);
+app.use(adsRouter);
 app.use(productsRouter);
+app.use(cartRouter);
 
 //PORTA
 const port = process.env.PORT || 5000;
