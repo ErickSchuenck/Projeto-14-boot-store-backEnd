@@ -7,7 +7,7 @@ dotenv.config();
 let db = null;
 // CRIAR ARQUIVO .env
 // MONGO_URL = mongodb://127.0.0.1:27017
-const mongoClient = new MongoClient(process.env.MONGO_URL);
+const mongoClient = new MongoClient(process.env.MONGO_URI);
 
 try {
     await mongoClient.connect();
