@@ -7,7 +7,6 @@ export async function getOrders(req, res) {
     const { user } = res.locals; // VARIÁVEL USER VINDO DE MIDDLEWARE GETUSER
     try {
         const cart = await db.collection("cart").find({userId: ObjectId(user._id)}).toArray();
-        console.log(cart);
         res.send(cart);
     } catch (e) {
         console.log("Erro ao carregar produtos do carrinho\n", e);
@@ -21,14 +20,12 @@ COLOCA NOME, IMAGEM E VALOR NO CARRINHO ATRELADO AO ID DO USUÁRIO*/
 export async function closeCart(req, res) {
     const { body } = req.body;
     const { user } = res.locals; // VARIÁVEL USER VINDO DE MIDDLEWARE GETUSER
-    const {cartItems} = body;
-    console.log(cartItems);
-
+    const {cartItems, totalPriceWithFee} = body;
 
     try {
-
         await db.collection(`cart`).insertOne({
             userId: user._id,
+            totalPrice: totalPriceWithFee,
             cartItems
         });
 
