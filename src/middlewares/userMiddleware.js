@@ -14,7 +14,6 @@ export async function getUser(req, res, next) {
 
         const user = await db.collection("users").findOne({ _id: session.userId });
         if (!user) return res.status(401).send("Usuário não encontrado"); // USUÁRIO NAO ENCONTRADO NO BANCO
-
         res.locals.user = user; // GUARDA USUÁRIO PARA PRÓXIMA FUNCIONALIDADE
         next();
 
