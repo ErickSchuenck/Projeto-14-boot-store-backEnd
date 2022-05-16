@@ -58,3 +58,32 @@ export async function signOut(req, res) {
     return res.sendStatus(500);
   }
 }
+
+
+export async function deleteAccount(req, res) {
+  const { user } = res.locals;
+
+  try {
+    await db.collection("users").deleteOne(user);
+    res.sendStatus(200); //SUCESSO
+  } catch (e) {
+    console.log("Erro ao deletar a conta!\n", e);
+    return res.sendStatus(500);
+  }
+}
+
+export async function editAccount(req, res) {
+  const { _id } = res.locals.user;
+  const { body } = req;
+
+  try {
+    await db.collection("users").updateOne({
+      _id
+    }, { $set: body })
+
+    res.sendStatus(200); //SUCESSO
+  } catch (e) {
+    console.log("Erro ao modificar conta!\n", e);
+    return res.sendStatus(500);
+  }
+}

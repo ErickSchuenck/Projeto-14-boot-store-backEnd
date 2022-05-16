@@ -27,9 +27,9 @@ export async function postProduct(req, res) {
         await db.collection("products").insertOne({
             name,
             image,
-            value
+            value,
+            timesItWasBought: 0
             // seller: user._id
-            // QUANTIDADE DE VEZES QUE FOI CLICADO
             // DAY.JS PARA RESGATAR PRODUTOS MAIS RECENTES
         });
 
