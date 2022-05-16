@@ -12,7 +12,7 @@ const mongoClient = new MongoClient(process.env.MONGO_URI);
 try {
     await mongoClient.connect();
     // NOME DO BANCO DE DADOS NO .env ((no meu caso coloquei "flexStore"))
-    db = mongoClient.db(process.env.DATABASE);
+    db = mongoClient.db('flexStore');
     console.log(chalk.bold.blue("Banco de dados conectado"))
 } catch (e) {
     console.log(chalk.bold.red("Erro ao conectar ao banco de dados\n"), e);
